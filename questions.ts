@@ -1,4 +1,10 @@
-export const questions =
+interface Questions {
+    q: string,
+    yes: string | Questions,
+    no: string | Questions
+}
+
+export const questions : Questions =
     {
         q: "Is it a major navigation block?",
         yes: "nav",
