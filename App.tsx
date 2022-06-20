@@ -1,35 +1,26 @@
 import {Button, Text, TextInput, View, Alert} from 'react-native';
 import {styles} from "./Styles";
 import React, {useState} from "react";
-import {questions} from "./questions";
+import {questions, YesOrNo} from "./questions";
 
 export default function App() {
 
     const [currentQnA, setCurrentQnA] = useState(questions);
     const [element, setElement] = useState("");
 
-
-    function pressYes() {
-        if (typeof currentQnA.yes === "string") {
-            setElement(currentQnA.yes)
+    function answer(yesOrNo: YesOrNo) {
+        if (typeof yesOrNo === "string") {
+            setElement(yesOrNo)
         } else {
-            setCurrentQnA(currentQnA.yes)
-        }
-    }
-
-    function pressNo() {
-        if (typeof currentQnA.no === "string") {
-            setElement(currentQnA.no)
-        } else {
-            setCurrentQnA(currentQnA.no)
+            setCurrentQnA(yesOrNo)
         }
     }
 
     return (
         <View style={styles.container}>
             <Text style={{fontSize: 30}}>{currentQnA.q}</Text>
-            <Button title={"Yes"} onPress={pressYes}/>
-            <Button title={"No"} onPress={pressNo}/>
+            <Button title={"Yes"} onPress={() => answer(currentQnA.yes)}/>
+            <Button title={"No"} onPress={() => answer(currentQnA.no)}/>
             <Text style={{fontSize: 30}}>{element}</Text>
         </View>
     );

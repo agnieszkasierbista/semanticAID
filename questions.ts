@@ -1,8 +1,10 @@
 interface Questions {
     q: string,
-    yes: string | Questions,
-    no: string | Questions
+    yes: YesOrNo,
+    no: YesOrNo
 }
+
+export type YesOrNo = string | Questions
 
 export const questions : Questions =
     {
