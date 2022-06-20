@@ -19,8 +19,14 @@ export default function App() {
     return (
         <View style={styles.container}>
             <Text style={{fontSize: 30}}>{currentQnA.q}</Text>
-            <Button title={"Yes"} onPress={() => answer(currentQnA.yes)}/>
-            <Button title={"No"} onPress={() => answer(currentQnA.no)}/>
+            {
+                element.length
+                    ? null
+                    : (<>
+                        <Button title={"Yes"} onPress={() => answer(currentQnA.yes)}/>
+                        <Button title={"No"} onPress={() => answer(currentQnA.no)}/>
+                    </>)
+            }
             <Text style={{fontSize: 30}}>{element}</Text>
         </View>
     );
